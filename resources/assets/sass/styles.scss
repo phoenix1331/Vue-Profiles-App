@@ -1,0 +1,22 @@
+//styles.scss
+
+
+@import "../plugins/bootstrap/scss/bootstrap.scss";
+
+
+.jumbotron{
+	background: url(../img/bg-pattern.png),#000;
+	background: url(../img/bg-pattern.png),-webkit-linear-gradient(to left,#000,#f2b605);
+	background: url(../img/bg-pattern.png),linear-gradient(to left,#000,#f2b605);
+	min-height: 500px;
+	padding: 200px 0px;
+	color: #fff;
+
+	.text-muted{
+		color: #fff!important;
+	}
+}
+
+.mb-2{
+	margin-bottom: 1.5rem!important;
+}

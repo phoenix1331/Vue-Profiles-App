@@ -17,11 +17,11 @@
   },
   "homepage": "https://github.com/phoenix1331/Vue-Profiles-App#readme",
   "devDependencies": {
-    "bootstrap": "^3.3.7",
-    "vue": "^2.1.10",
-    "vue-resource": "^1.2.0",
+    "bootstrap": "^4.0.0-alpha.2",
     "gulp": "^3.8.8",
     "laravel-elixir": "^4.0.0",
-    "laravel-elixir-vueify": "^1.0.0"
+    "laravel-elixir-vueify": "^1.0.0",
+    "vue": "^2.1.10",
+    "vue-resource": "^1.2.0"
   }
 }

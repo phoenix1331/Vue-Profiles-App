@@ -1,0 +1,27 @@
+{
+  "name": "vue-profiles-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phoenix1331/Vue-Profiles-App.git"
+  },
+  "author": "Darren Williams",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/phoenix1331/Vue-Profiles-App/issues"
+  },
+  "homepage": "https://github.com/phoenix1331/Vue-Profiles-App#readme",
+  "devDependencies": {
+    "bootstrap": "^3.3.7",
+    "vue": "^2.1.10",
+    "vue-resource": "^1.2.0",
+    "gulp": "^3.8.8",
+    "laravel-elixir": "^4.0.0",
+    "laravel-elixir-vueify": "^1.0.0"
+  }
+}

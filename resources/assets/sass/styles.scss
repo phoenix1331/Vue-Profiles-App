@@ -1,8 +1,8 @@
-//styles.scss
-
-
 @import "../plugins/bootstrap/scss/bootstrap.scss";
 
+[v-cloak] {
+  display: none;
+}
 
 .jumbotron{
 	background: url(../img/bg-pattern.png),#000;

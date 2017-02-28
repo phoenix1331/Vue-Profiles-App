@@ -1,10 +1,12 @@
-import Vue from 'vue/dist/vue.min.js';
+import Vue from 'vue/dist/vue.js';
 import VueRouter from 'vue-router'
 import VueResource from 'vue-resource/dist/vue-resource.js';
 //Views
 import HomePage from './components/HomePage.vue';
 import AboutPage from './components/AboutPage.vue';
 import NotFoundComponent from './components/NotFoundComponent.vue';
+
+Vue.config.devtools = true ;
 
 Vue.use(VueResource);
 

@@ -6374,6 +6374,9 @@ a.text-gray-dark:focus, a.text-gray-dark:hover {
   .hidden-print {
     display: none !important; } }
 
+[v-cloak] {
+  display: none; }
+
 .jumbotron {
   background: url(../img/bg-pattern.png), #000;
   background: url(../img/bg-pattern.png), linear-gradient(to left, #000, #f2b605);

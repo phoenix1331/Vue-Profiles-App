@@ -13,24 +13,100 @@
 		    </div>
 		  </div>
 		</section>
+		<div class="container">
+			<div class="col-md-3" v-for="note in notes">
+				{{note.dv_name}} <button v-bind:id="note.dv_id" v-on:click="deleteItem($event)">Delete</button>
+				<button v-on:click="postItem">Add</button>
+			</div>
+			<div v-if="errors">There was an issue retrieving the data. {{errorMessage}}</div>
+		</div>
 		<foot></foot>
 		</div>
 		</template>
 
 		<script>
 
-import Nav from './Nav.vue';
-import Foot from './Foot.vue';
+
+		import Nav from './Nav.vue';
+		import Foot from './Foot.vue';
 		  export default {
 		    data () {
 		      return {
 		        results: [],
 		        errors: false,
-		        message: 'About Page'
+		        message: 'About Page',
+		        errorMessage: 'No error message returned',
+		        notes: []
 		      }
 		    },
 		    methods: {
 		        getData: function () {
+
+		        	var resource = this.$resource('http://localhost:4500/api/notes');
+		        	var vm = this;
+
+		        	resource.get().then((response) => {
+
+		        	    vm.notes = response.data;
+
+		        	}, (response) => {
+
+		        		vm.errors = true;
+		        		vm.errorMessage = "The URL " + response.url + " returned a " + response.status + " status - " + response.statusText;
+
+		        	});
+
+		        },
+
+		        deleteItem: function (event) {
+
+		        	var id = event.currentTarget.id;
+
+		        	var resource = this.$resource('http://localhost:4500/api/notes/'+id);
+		        	var vm = this;
+
+		        	resource.delete().then((response) => {
+
+		        	    vm.getData();
+
+		        	}, (response) => {
+
+		        		vm.errors = true;
+		        		console.log(response);
+		        		vm.errorMessage = "The URL " + response.url + " returned a " + response.status + " status - " + response.statusText;
+
+		        	});
+
+		        },
+
+		          postItem: function () {
+
+		          	var posted = 'worked from vue';
+		          	var vm = this;
+
+		          	this.$http.post('http://localhost:4500/api/notes',{dv_name:posted}).then(response => {
+		          	  // success callback
+		          	  vm.getData();
+		          	}, response => {
+		          	  // error callback
+		          	  this.errors = true;
+		        		console.log(response);
+		        		vm.errorMessage = "The URL " + response.url + " returned a " + response.status + " status - " + response.statusText;
+		          	});
+
+		        	// var resource = this.$resource('http://localhost:4500/api/notes');
+		        	// var vm = this;
+
+
+		        	// resource.post({dv_name:posted}).then((response) => {
+
+		        	//     vm.getData();
+
+		        	// }, (response) => {
+
+
+
+		        	// });
 
 		        }
 		    },
@@ -38,7 +114,7 @@ import Foot from './Foot.vue';
 		  		naviagation: Nav,
 		  		foot: Foot
 		  },
-		  ready: function(){
+		  mounted: function(){
 		    this.getData();
 		  }
 		}

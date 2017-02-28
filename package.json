@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "gulp" : "gulp",
+    "gulp watch" : "gulp watch"
   },
   "repository": {
     "type": "git",
@@ -18,7 +20,7 @@
   "homepage": "https://github.com/phoenix1331/Vue-Profiles-App#readme",
   "devDependencies": {
     "bootstrap": "^4.0.0-alpha.2",
-    "gulp": "^3.8.8",
+    "gulp": "^3.9.1",
     "laravel-elixir": "^4.0.0",
     "laravel-elixir-vueify-2.0": "^1.0.3",
     "vue": "^2.1.10",

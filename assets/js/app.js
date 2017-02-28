@@ -19187,6 +19187,7 @@ exports.default = {
   data: function data() {
     return {
       results: [],
+      dv_name: '',
       errors: false,
       message: 'About Page',
       errorMessage: 'No error message returned',
@@ -19231,12 +19232,13 @@ exports.default = {
     postItem: function postItem() {
       var _this = this;
 
-      var posted = 'worked from vue';
       var vm = this;
 
-      this.$http.post('http://localhost:4500/api/notes', { dv_name: posted }).then(function (response) {
+      this.$http.post('http://localhost:4500/api/notes', { dv_name: this.dv_name }).then(function (response) {
         // success callback
         vm.getData();
+        //Clear field
+        vm.dv_name = '';
       }, function (response) {
         // error callback
         _this.errors = true;
@@ -19267,7 +19269,7 @@ exports.default = {
   }
 };
 if (module.exports.__esModule) module.exports = module.exports.default
-;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n<div id=\"app\">\n<naviagation></naviagation>\n<section class=\"jumbotron\">\n  <div class=\"container\">\n  <div class=\"col-md-8\">\n    <h1 class=\"jumbotron-heading\">{{message}}</h1>\n    <p class=\"lead text-muted\">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</p>\n    <p>\n      <a href=\"#\" class=\"btn btn-primary\">Main call to action</a>\n      <a href=\"#\" class=\"btn btn-secondary\">Secondary action</a>\n    </p>\n    </div>\n  </div>\n</section>\n<div class=\"container\">\n\t<div class=\"col-md-3\" v-for=\"note in notes\">\n\t\t{{note.dv_name}} <button v-bind:id=\"note.dv_id\" v-on:click=\"deleteItem($event)\">Delete</button>\n\t\t<button v-on:click=\"postItem\">Add</button>\n\t</div>\n\t<div v-if=\"errors\">There was an issue retrieving the data. {{errorMessage}}</div>\n</div>\n<foot></foot>\n</div>\n"
+;(typeof module.exports === "function"? module.exports.options: module.exports).template = "\n<div id=\"app\">\n<naviagation></naviagation>\n<section class=\"jumbotron\">\n  <div class=\"container\">\n  <div class=\"col-md-8\">\n    <h1 class=\"jumbotron-heading\">{{message}}</h1>\n    <p class=\"lead text-muted\">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</p>\n    <p>\n      <a href=\"#\" class=\"btn btn-primary\">Main call to action</a>\n      <a href=\"#\" class=\"btn btn-secondary\">Secondary action</a>\n    </p>\n    </div>\n  </div>\n</section>\n<div class=\"container\">\n  <div class=\"col-md-12\">\n  \t<input type=\"text\" v-model=\"dv_name\">\n  \t<button v-on:click=\"postItem\">Add</button>\n  </div>\n\t<div class=\"col-md-3\" v-for=\"note in notes\">\n\t\t{{note.dv_name}} <button v-bind:id=\"note.dv_id\" v-on:click=\"deleteItem($event)\">Delete</button>\n\t</div>\n\t<div v-if=\"errors\">There was an issue retrieving the data. {{errorMessage}}</div>\n</div>\n<foot></foot>\n</div>\n"
 if (module.hot) {(function () {  module.hot.accept()
   var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)

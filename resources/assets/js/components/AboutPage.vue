@@ -14,9 +14,12 @@
 		  </div>
 		</section>
 		<div class="container">
+		  <div class="col-md-12">
+		  	<input type="text" v-model="dv_name">
+		  	<button v-on:click="postItem">Add</button>
+		  </div>
 			<div class="col-md-3" v-for="note in notes">
 				{{note.dv_name}} <button v-bind:id="note.dv_id" v-on:click="deleteItem($event)">Delete</button>
-				<button v-on:click="postItem">Add</button>
 			</div>
 			<div v-if="errors">There was an issue retrieving the data. {{errorMessage}}</div>
 		</div>
@@ -33,6 +36,7 @@
 		    data () {
 		      return {
 		        results: [],
+		        dv_name: '',
 		        errors: false,
 		        message: 'About Page',
 		        errorMessage: 'No error message returned',
@@ -81,12 +85,13 @@
 
 		          postItem: function () {
 
-		          	var posted = 'worked from vue';
 		          	var vm = this;
 
-		          	this.$http.post('http://localhost:4500/api/notes',{dv_name:posted}).then(response => {
+		          	this.$http.post('http://localhost:4500/api/notes',{dv_name:this.dv_name}).then(response => {
 		          	  // success callback
 		          	  vm.getData();
+		          	  //Clear field
+		          	  vm.dv_name = '';
 		          	}, response => {
 		          	  // error callback
 		          	  this.errors = true;
